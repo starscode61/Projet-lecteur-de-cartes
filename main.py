@@ -51,8 +51,8 @@ def verifier(event):
 root = tk.Tk()
 root.geometry("500x300")
 root.title("Projet lecteur de cartes")
-logo = PhotoImage(file="logo.png")
-root.iconphoto(True, logo)
+logo_noel= PhotoImage(file="père_noël.png")
+root.iconphoto(True, logo_noel)
 
 label_info = tk.Label(root, text="Veuillez scanner votre carte", font=("Marianne", 16))
 label_info.pack(pady=10)
