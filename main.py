@@ -1,6 +1,7 @@
 import json
 import tkinter as tk
 from tkinter import PhotoImage
+import tkinter.ttk as ttk
 
 with open("eleves.json", "r", encoding="utf-8") as f:
     base = json.load(f)
