@@ -33,7 +33,7 @@ def verifier(event):
                 absents.append(nom)
 
         if len(absents) > 0:
-            resultat.config(text="Les élèves absents sont :\n" + "\n".join(absents))
+            resultat.config(text="il y a "+ str(len(absents)) +" élèves absents :\n" + "\n".join(absents))
         else:
             resultat.config(text="Tous les élèves sont présents")
         return
