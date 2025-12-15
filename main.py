@@ -44,6 +44,7 @@ def verifier(event):
         presents.append(nom)
 
     resultat.config(text=f"{nom} est présent.")
+    progress_barre.config(value=len(presents)/len(eleves)*100)
 
 
 root = tk.Tk()
@@ -54,6 +55,9 @@ root.iconphoto(True, logo)
 
 label_info = tk.Label(root, text="Veuillez scanner votre carte", font=("Marianne", 16))
 label_info.pack(pady=10)
+
+progress_barre = ttk.Progressbar(root,length=100)
+progress_barre.pack(pady=10)
 
 entree = tk.Entry(root, font=("Marianne", 14))
 entree.pack(pady=10)
