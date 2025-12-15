@@ -60,7 +60,7 @@ label_info.pack(pady=10)
 progress_barre = ttk.Progressbar(root,length=100)
 progress_barre.pack(pady=10)
 
-entree = tk.Entry(root, font=("Marianne", 14))
+entree = tk.Entry(root, font=("Marianne", 14), bg="#CFC1A3")
 entree.pack(pady=10)
 entree.focus_set()
 
