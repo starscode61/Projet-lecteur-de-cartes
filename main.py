@@ -37,10 +37,9 @@ def new_id(id):
     button_box = tk.Frame(root)
     
     button_oui = tk.Button(button_box,text="oui",command=lambda: (ajouter_nom(id)))
-    button_oui.pack()
+    button_oui.pack(side=LEFT, padx=10)
     button_non = tk.Button(button_box,text="non",command=lambda: (button_box.destroy(),resultat.config(text="")))
-    button_non.bind()
-    button_non.pack()
+    button_non.pack(side=RIGHT, padx=10)
 
     button_box.pack(pady=10)
 
