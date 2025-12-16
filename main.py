@@ -8,6 +8,18 @@ with open("eleves.json", "r", encoding="utf-8") as f:
 
 carte_prof = None
 eleves = {}
+super_dico_pour_changer_les_lettres_en_chiffres = {
+    "&":"1",
+    "é":"2",
+    '"':"3",
+    "'":"4",
+    "(":"5",
+    "-":"6",
+    "è":"7",
+    "_":"8",
+    "ç":"9",
+    "à":"0",
+}
 
 for identifiant, nom in base.items():
     if nom == "Professeur":
@@ -19,7 +31,13 @@ presents = []
 
 
 def verifier(event):
-    id = entree.get()
+    id = ""
+    try :
+        int(entree.get())
+        id = entree.get()
+    except:
+        for l in entree.get():
+            id += super_dico_pour_changer_les_lettres_en_chiffres[l]
     entree.delete(0, tk.END)
     entree.focus_set()
 
