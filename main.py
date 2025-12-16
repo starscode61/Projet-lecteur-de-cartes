@@ -28,6 +28,22 @@ for identifiant, nom in base.items():
         eleves[identifiant] = nom
 
 presents = []
+def ajouter_nom(id):
+    pass
+
+
+def new_id(id):
+    resultat.config(text="Identifiant inconnu voulez vous l'ajouter ?")
+    button_box = tk.Frame(root)
+    
+    button_oui = tk.Button(button_box,text="oui",command=lambda: (ajouter_nom(id)))
+    button_oui.pack()
+    button_non = tk.Button(button_box,text="non",command=lambda: (button_box.destroy(),resultat.config(text="")))
+    button_non.bind()
+    button_non.pack()
+
+    button_box.pack(pady=10)
+
 
 
 def verifier(event):
@@ -42,7 +58,7 @@ def verifier(event):
     entree.focus_set()
 
     if id not in base:
-        resultat.config(text="Identifiant inconnu")
+        new_id(id)
         return
 
     if id == carte_prof:
