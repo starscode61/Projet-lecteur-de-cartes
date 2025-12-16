@@ -60,10 +60,9 @@ def new_id():
     button_box = tk.Frame(root)
     
     button_oui = tk.Button(button_box,text="oui",command=lambda: (button_box.destroy(),resultat.config(text=""),rentrer_nom()))
-    button_oui.pack()
+    button_oui.pack(side=LEFT, padx=10)
     button_non = tk.Button(button_box,text="non",command=lambda: (button_box.destroy(),resultat.config(text=""),entree.delete(0, tk.END)))
-    button_non.bind()
-    button_non.pack()
+    button_non.pack(side=RIGHT, padx=10)
 
     button_box.pack(pady=10)
 
@@ -118,10 +117,10 @@ root.iconphoto(True, logo_noel)
 label_info = tk.Label(root, text="Veuillez scanner votre carte", font=("Marianne", 16))
 label_info.pack(pady=10)
 
-progress_barre = ttk.Progressbar(root,length=100)
+progress_barre = ttk.Progressbar(root,length=490)
 progress_barre.pack(pady=10)
 
-entree = tk.Entry(root, font=("Marianne", 14), bg="#CFC1A3")
+entree = tk.Entry(root, font=("Marianne", 14))
 entree.pack(pady=10)
 entree.focus_set()
 
