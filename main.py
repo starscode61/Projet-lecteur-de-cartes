@@ -28,18 +28,42 @@ for identifiant, nom in base.items():
         eleves[identifiant] = nom
 
 presents = []
-def ajouter_nom(id):
-    pass
 
+def ajouter_nom(id,event):
+    nom = entree.get()
+    with open("eleves.json", "r") as f:
+        fichier = f.readlines()
+    while fichier[-1] == "\n":
+        fichier.pop(-1)
+        print(fichier)
+    fichier.insert(-3,'    "'+id+'": "'+nom+'",\n')
+    print(fichier)
+    with open("eleves.json", "w") as f:
+        f.writelines(fichier)
+    
+    label_info.config(text="Veuillez scanner votre carte")
+    entree.unbind("<Return>")
+    entree.bind("<Return>", verifier)
+    entree.delete(0, tk.END)
 
-def new_id(id):
+def rentrer_nom():
+    id = entree.get()
+    entree.delete(0, tk.END)
+
+    label_info.config(text="ajouter le nom")
+    entree.unbind("<Return>")
+    entree.bind("<Return>", lambda event: ajouter_nom(id,event))
+    
+
+def new_id():
     resultat.config(text="Identifiant inconnu voulez vous l'ajouter ?")
     button_box = tk.Frame(root)
     
-    button_oui = tk.Button(button_box,text="oui",command=lambda: (ajouter_nom(id)))
-    button_oui.pack(side=LEFT, padx=10)
-    button_non = tk.Button(button_box,text="non",command=lambda: (button_box.destroy(),resultat.config(text="")))
-    button_non.pack(side=RIGHT, padx=10)
+    button_oui = tk.Button(button_box,text="oui",command=lambda: (button_box.destroy(),resultat.config(text=""),rentrer_nom()))
+    button_oui.pack()
+    button_non = tk.Button(button_box,text="non",command=lambda: (button_box.destroy(),resultat.config(text=""),entree.delete(0, tk.END)))
+    button_non.bind()
+    button_non.pack()
 
     button_box.pack(pady=10)
 
@@ -53,12 +77,14 @@ def verifier(event):
     except:
         for l in entree.get():
             id += super_dico_pour_changer_les_lettres_en_chiffres[l]
-    entree.delete(0, tk.END)
-    entree.focus_set()
 
     if id not in base:
-        new_id(id)
+        new_id()
         return
+    
+    
+    entree.delete(0, tk.END)
+    entree.focus_set()
 
     if id == carte_prof:
         absents = []
@@ -105,3 +131,4 @@ resultat = tk.Label(root, text="", font=("Marianne", 14))
 resultat.pack(pady=20)
 
 root.mainloop()
+
