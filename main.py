@@ -51,8 +51,10 @@ def verifier(event):
             if nom not in presents:
                 absents.append(nom)
 
-        if len(absents) > 0:
-            resultat.config(text="il y a "+ str(len(absents)) +" élèves absents :\n" + "\n".join(absents))
+        if len(absents) > 1:
+            resultat.config(text="il y a "+ str(len(absents)) +" élèves absents soit "+str(round(len(absents)/len(eleves)*100,1))+"% de la classe :\n" + "\n".join(absents))
+        elif len(absents) == 1:
+            resultat.config(text="il y a 1 élève absent soit "+str(round(len(absents)/len(eleves)*100,1))+"% de la classe :\n" + "\n".join(absents))
         else:
             resultat.config(text="Tous les élèves sont présents")
         return
