@@ -58,7 +58,7 @@ def rentrer_nom():
         for l in entree.get():
             id += super_dico_pour_changer_les_lettres_en_chiffres[l]
     if id in base or carte_ajouter:
-        resultat.config(text="carte déjà ajoutée")
+        resultat.config(text="Carte déjà ajoutée")
         entree.delete(0, tk.END)
         entree.bind("<Return>", verifier)
         return
@@ -93,7 +93,7 @@ def verifier(event):
 
     if id not in base:
         if id in carte_ajouter:
-            resultat.config(text="carte déjà ajoutée")
+            resultat.config(text="Carte déjà ajoutée")
             entree.delete(0, tk.END)
             return
         new_id()
