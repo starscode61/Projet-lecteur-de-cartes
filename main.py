@@ -48,13 +48,13 @@ def rentrer_nom():
     id = entree.get()
     entree.delete(0, tk.END)
 
-    label_info.config(text="ajouter le nom")
+    label_info.config(text="Ajoutez le nom :")
     entree.unbind("<Return>")
     entree.bind("<Return>", lambda event: ajouter_nom(id,event))
     
 
 def new_id():
-    resultat.config(text="Identifiant inconnu voulez vous l'ajouter ?")
+    resultat.config(text="Identifiant inconnu, voulez-vous l'ajouter ?")
     button_box = tk.Frame(root)
     
     button_oui = tk.Button(button_box,text="oui",command=lambda: (button_box.destroy(),resultat.config(text=""),rentrer_nom()))
@@ -115,7 +115,7 @@ root.iconphoto(True, logo_noel)
 label_info = tk.Label(root, text="Veuillez scanner votre carte", font=("Marianne", 16))
 label_info.pack(pady=10)
 
-progress_barre = ttk.Progressbar(root,length=350)
+progress_barre = ttk.Progressbar(root,length=490)
 progress_barre.pack(pady=10)
 
 entree = tk.Entry(root, font=("Marianne", 14))
