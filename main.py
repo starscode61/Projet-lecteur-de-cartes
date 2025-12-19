@@ -3,11 +3,14 @@ import tkinter as tk
 from tkinter import PhotoImage, LEFT, RIGHT
 import tkinter.ttk as ttk
 
+
 with open("eleves.json", "r", encoding="utf-8") as f:
     base = json.load(f)
 
+
 carte_prof = None
 eleves = {}
+carte_ajouter = []
 super_dico_pour_changer_les_lettres_en_chiffres = {
     "&":"1",
     "é":"2",
@@ -38,6 +41,8 @@ def ajouter_nom(id,event):
     fichier.insert(-3,'    "'+id+'": "'+nom+'",\n')
     with open("eleves.json", "w") as f:
         f.writelines(fichier)
+
+    carte_ajouter.append(id)
     
     label_info.config(text="Veuillez scanner votre carte")
     entree.unbind("<Return>")
@@ -46,6 +51,11 @@ def ajouter_nom(id,event):
 
 def rentrer_nom():
     id = entree.get()
+    if id in base or carte_ajouter:
+        resultat.config(text="carte déjà ajoutée")
+        entree.delete(0, tk.END)
+        entree.bind("<Return>", verifier)
+        return
     entree.delete(0, tk.END)
 
     label_info.config(text="Ajoutez le nom :")
@@ -76,6 +86,10 @@ def verifier(event):
             id += super_dico_pour_changer_les_lettres_en_chiffres[l]
 
     if id not in base:
+        if id in carte_ajouter:
+            resultat.config(text="carte déjà ajoutée")
+            entree.delete(0, tk.END)
+            return
         new_id()
         return
     
@@ -128,4 +142,5 @@ resultat = tk.Label(root, text="", font=("Marianne", 14))
 resultat.pack(pady=20)
 
 root.mainloop()
+
 
