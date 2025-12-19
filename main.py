@@ -115,7 +115,7 @@ root.iconphoto(True, logo_noel)
 label_info = tk.Label(root, text="Veuillez scanner votre carte", font=("Marianne", 16))
 label_info.pack(pady=10)
 
-progress_barre = ttk.Progressbar(root,length=490)
+progress_barre = ttk.Progressbar(root,length=350)
 progress_barre.pack(pady=10)
 
 entree = tk.Entry(root, font=("Marianne", 14))
