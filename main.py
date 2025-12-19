@@ -49,17 +49,17 @@ def rentrer_nom():
     entree.delete(0, tk.END)
 
     label_info.config(text="Ajoutez le nom :")
-    entree.unbind("<Return>")
     entree.bind("<Return>", lambda event: ajouter_nom(id,event))
     
 
 def new_id():
+    entree.unbind("<Return>")
     resultat.config(text="Identifiant inconnu, voulez-vous l'ajouter ?")
     button_box = tk.Frame(root)
     
     button_oui = tk.Button(button_box,text="oui",command=lambda: (button_box.destroy(),resultat.config(text=""),rentrer_nom()))
     button_oui.pack(side=LEFT, padx=10)
-    button_non = tk.Button(button_box,text="non",command=lambda: (button_box.destroy(),resultat.config(text=""),entree.delete(0, tk.END)))
+    button_non = tk.Button(button_box,text="non",command=lambda: (button_box.destroy(),resultat.config(text=""),entree.delete(0, tk.END),entree.bind("<Return>", verifier)))
     button_non.pack(side=RIGHT, padx=10)
 
     button_box.pack(pady=10)
