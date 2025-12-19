@@ -36,7 +36,6 @@ def ajouter_nom(id,event):
     while fichier[-1] == "\n":
         fichier.pop(-1)
     fichier.insert(-3,'    "'+id+'": "'+nom+'",\n')
-    print(fichier)
     with open("eleves.json", "w") as f:
         f.writelines(fichier)
     
