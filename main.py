@@ -50,7 +50,13 @@ def ajouter_nom(id,event):
     entree.delete(0, tk.END)
 
 def rentrer_nom():
-    id = entree.get()
+    id = ""
+    try :
+        int(entree.get())
+        id = entree.get()
+    except:
+        for l in entree.get():
+            id += super_dico_pour_changer_les_lettres_en_chiffres[l]
     if id in base or carte_ajouter:
         resultat.config(text="carte déjà ajoutée")
         entree.delete(0, tk.END)
@@ -142,5 +148,4 @@ resultat = tk.Label(root, text="", font=("Marianne", 14))
 resultat.pack(pady=20)
 
 root.mainloop()
-
 
